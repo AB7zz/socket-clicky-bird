@@ -5,6 +5,44 @@ body{
     font-family: 'Permanent Marker', cursive;
     text-align: center;
 }
+.timer {
+    display: none;
+}
+.countdown{
+    display: none;
+}
+.scaleword{
+    transition: 1s;
+    animation-name: scaleword;
+    animation-duration: 1s;
+}
+@keyframes scaleword {
+    0%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(0)
+    }
+}
+.scaleword1{
+    transition: 1s;
+    animation-name: scaleword1;
+    animation-duration: 1s;
+}
+@keyframes scaleword1 {
+    0%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(0)
+    }
+}
 .divide{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -107,6 +145,7 @@ body{
     height: 150px;
     width: auto;
     cursor: pointer;
+    display: none;
 }
 .score{
     font-family: 'Erica One', cursive;

@@ -24,7 +24,7 @@ const nameIdTwoInput = document.getElementById('nameidtwo')
 const roomIdInput = document.getElementById('roomid')  
 const joinRoomIdInput = document.getElementById('joinroomid')
 
-//Random
+//Others
 const playeroneconnectioncircle = document.getElementById('playeroneconnectioncircle')
 const playertwoconnectioncircle = document.getElementById('playertwoconnectioncircle')
 const errormessage = document.getElementById('errormessage')
@@ -38,6 +38,8 @@ const winnernameone = document.getElementById('winnernameone')
 const winnernametwo = document.getElementById('winnernametwo')
 const winnerscoreone = document.getElementById('winnerscoreone')
 const winnerscoretwo = document.getElementById('winnerscoretwo')
+const timer = document.getElementById('timer')
+const countdown = document.getElementById('countdown')
 
 //User 1
 const scoreone = document.getElementById('score1')
@@ -168,7 +170,7 @@ socket.on('player-1-connected', nameId => {
     if(nameId!==''){
         usernameone.innerText = ' '+ localStorage.getItem('player-1')
     }else{
-        usernameone.innerText = ' You'
+        usernameone.innerText = ' Player 1'
     }
     waitingmessage.innerText = 'Waiting for another player...'
     playersConnected(1)
@@ -182,18 +184,25 @@ socket.on('room-joined', id => {
 socket.on('player-2-connected', nameId => {
     playerOneConnected = true
     playerTwoConnected = true
-    usernameone.innerText = ' '+ localStorage.getItem('player-1')
+    if(localStorage.getItem('player-1')){
+        usernameone.innerText = ' '+ localStorage.getItem('player-1')
+    }else{
+        usernameone.innerText = ' Player 1'
+    }
     if(nameId!=='' || nameId){
         usernametwo.innerText = nameId
         localStorage.setItem('player-2', nameId)
     }else{
-        usernametwo.innerText = " Enemy"
+        usernametwo.innerText = " Player 2"
     }
     waitingmessage.innerText = ''
+    buttonone.style.display = 'block'
+    buttontwo.style.display = 'block'
+    setTheDamnTimer()
     playersConnected(2)
 })
 socket.on('player-1-disconnected', () => {
-    reset()
+    reset() 
 })
 socket.on('player-2-disconnected', () => {
     // playerTwoLeftTheGame()
@@ -231,13 +240,35 @@ function reset() {
     playerOneConnected = false
     playerTwoConnected = false
     game.style.display = 'none'
+    timer.style.display = 'none'
+    countdown.style.display = 'none'
     home.style.display = 'none'
     heading.style.display = 'none'
     winner.style.display = 'block'
-    winnernameone.innerText = localStorage.getItem('player-1')
-    winnernametwo.innerText = localStorage.getItem('player-2')
-    winnerscoreone.innerText = localStorage.getItem('score-1')
-    winnerscoretwo.innerText = localStorage.getItem('score-2')
+    if(localStorage.getItem('player-1')){
+        winnernameone.innerText = localStorage.getItem('player-1')
+    }else{
+        winnernameone.innerText = "Player 1"
+    }
+    if(localStorage.getItem('player-2')){
+        winnernametwo.innerText = localStorage.getItem('player-2')
+    }else{
+        winnernametwo.innerText = "Player 2"
+    }
+    if(localStorage.getItem('score-1')){
+        winnerscoreone.innerText = localStorage.getItem('score-1')
+    }else{
+        winnerscoreone.innerText = "0"
+    }
+    if(localStorage.getItem('score-2')){
+        winnerscoretwo.innerText = localStorage.getItem('score-2')
+    }else{
+        winnerscoretwo.innerText = "0"
+    }
+    localStorage.removeItem('player-1')
+    localStorage.removeItem('player-2')
+    localStorage.removeItem('score-1')
+    localStorage.removeItem('score-2')
     playeroneconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
     playertwoconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
 }
@@ -252,4 +283,33 @@ function refresh(){
     playeroneconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
     playertwoconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
     window.location.reload()
+}
+function setTheDamnTimer(){
+    let i = 60
+    let f = 5
+    countdown.style.display = 'block'
+    setInterval(() => {
+        if(f==0){
+            timer.style.display = 'block'
+            countdown.style.display = 'none'
+            setTimeout(() => {
+                setInterval(function() {
+                    if(i==0){
+                        reset()
+                    }
+                    timer.innerText = i
+                    --i
+                }, 1000)
+            }, 0)
+        }
+        if(countdown.classList.contains('scaleword')){
+            countdown.classList.add('scaleword1')
+            countdown.classList.remove('scaleword')
+        }else{
+            countdown.classList.add('scaleword')
+            countdown.classList.remove('scaleword1')
+        }
+        countdown.innerText = f
+        --f
+    }, 1000)
 }

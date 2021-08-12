@@ -63,7 +63,6 @@ io.on('connection', socket => {
     }) 
 
     socket.on('click', ({roomId, playerId, clickNo}) => {
-        console.log(roomId, playerId, clickNo)
         clickScore(roomId, playerId, clickNo)
         const clickone = clicks[roomId][0]
         const clicktwo = clicks[roomId][1]
