@@ -1,0 +1,201 @@
+body{
+    background: rgb(255, 253, 128);
+}
+.heading{
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+}
+.divide{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* padding: 70px 300px 70px 400px; */
+    padding: 3% 10% 0% 25%;
+}
+.image{
+    height: 150px;
+    margin-top: 100px;
+    width: auto;
+}
+.jump {
+    animation-name: jump;
+    animation-duration: 0.1s;
+}
+.jump1 {
+    animation-name: jump1;
+    animation-duration: 0.1s;
+}
+@keyframes jump{
+    from{
+
+    }
+    to{
+        position: relative;
+        bottom: 10px;
+    }
+
+}
+@keyframes jump1{
+    from{
+
+    }
+    to{
+        position: relative;
+        bottom: 10px;
+    }
+
+}
+.shake{
+    position: relative;
+    animation-name: shake;
+    animation-duration: 0.1s;
+}
+.shake1{
+    position: relative;
+    animation-name: shake1;
+    animation-duration: 0.1s;
+}
+@keyframes shake{
+    0%{
+        right: 7px;
+    }
+    25%{
+        left: 7px;
+    }
+    60%{
+        right: 7px
+    }
+    100%{
+        left: 7px
+    }
+}
+@keyframes shake1{
+    0%{
+        right: 7px;
+    }
+    25%{
+        left: 7px;
+    }
+    60%{
+        right: 7px
+    }
+    100%{
+        left: 7px
+    }
+}
+.createroom{
+    display: none;
+    /* display: block; */
+}
+.joinroom{
+    display: none;
+    /* display: block; */
+}
+.game{
+    display: none;
+    /* display: block; */
+}
+.winner {
+    display: none;
+    /* display: block; */
+}
+.home{
+    margin-top: 50px;
+    display: block;
+    /* display: none; */
+}
+.button{
+    height: 150px;
+    width: auto;
+    cursor: pointer;
+}
+.score{
+    font-family: 'Erica One', cursive;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 60px;
+    color: #fff;
+}
+.roomid {
+    padding: 20px 20px;
+    width: 20%;
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    transition: 0.15s;
+}
+.roomid:focus{
+    outline: none !important;
+    transform: scale(1.03);
+    transition: 0.15s;
+}
+.createbutton{
+    padding: 15px 100px;
+    background: rgb(0, 160, 0);
+    color: white;
+    font-size: 13px;
+    display: flex;
+    margin: auto;
+    cursor: pointer;
+    outline: none !important;
+    margin-bottom: 15px;
+    outline: none !important;
+    outline-style: none !important;
+    border-style: none !important;
+}
+.joinbutton{
+    padding: 15px 100px;
+    background: rgb(0, 160, 0);
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    margin: auto;
+    margin-bottom: 15px;
+    outline: none !important;
+    outline-style: none !important;
+    border-style: none !important;
+    margin-bottom: 15px;
+}
+.cancelbutton{
+    padding: 15px 100px;
+    background: rgb(255, 117, 83);
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    margin: auto;
+    margin-bottom: 15px;
+    outline: none !important;
+    outline-style: none !important;
+    border-style: none !important;
+    margin-bottom: 15px;
+}
+.gotohomebutton{
+    padding: 15px 100px;
+    background: rgb(255, 117, 83);
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    margin: auto;
+    margin-bottom: 15px;
+    outline: none !important;
+    outline-style: none !important;
+    border-style: none !important;
+    margin-bottom: 15px;
+}
+.or{
+    text-align: center;
+}
+.circle{
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    background: red;
+}
+.connectedcircle{
+    background: green;
+}
+.username{
+    font-size: 15px;
+}

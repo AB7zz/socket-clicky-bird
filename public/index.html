@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Clicky Bird</title>
+</head>
+<body>
+    <h1 id="heading" class="heading">Clicky Bird</h1>
+    <div class="home" id="home">
+        <button class="createbutton" id="homecreatebutton">Create Room</button>
+        <button class="joinbutton" id="homejoinbutton">Join Room</button>
+    </div>
+    <div class="createroom" id="createroom">
+        <input type="text" class="roomid" id="nameidone" placeholder="Enter your name..." />
+        <input type="text" class="roomid" id="roomid" placeholder="Enter Room Id..." />
+        <button class="createbutton" id="createroombutton">Create</button>
+        <button class="cancelbutton" id="cancelcreateroombutton">Cancel</button>
+    </div>
+    <div class="joinroom" id="joinroom">
+        <input type="text" class="roomid" id="nameidtwo" placeholder="Enter your name..." />
+        <input type="text" class="roomid" id="joinroomid" placeholder="Enter Room Id..." />
+        <button class="joinbutton" id="joinroombutton">Join</button>
+        <p style="text-align: center; font-size: 16px;">OR</p>
+        <button class="joinbutton" id="joinrandomroombutton">Join Random</button>
+        <button class="cancelbutton" id="canceljoinroombutton">Cancel</button>
+        <p style="text-align: center; color: red; font-size: 20px;" id="errormessage"></p>
+    </div>
+    <div id="game" class="game">
+        <div class="divide">
+            <div id="birdone">
+                <span id="score1" class="score">0</span>
+                <br>
+                <img id="image1" class="image" src="images/bird.png" />
+                <br>
+                <img id="button1" class="button" src="images/button.png" />
+            </div>
+            <div id="birdtwo">
+                <span id="score2" class="score">0</span>
+                <br>
+                <img id="image2" class="image" src="images/bird.png" />
+                <br>
+                <img id="button2" class="button" src="images/button.png" />
+            </div>
+        </div>
+        <div>
+            <span id="playeroneconnectioncircle"></span><span id="usernameone" class="username"> </span>
+            <span id="playertwoconnectioncircle"></span><span id="usernametwo" class="username"> </span>
+            <span class="username" id="waitingmessage"></span>
+        </div>
+    </div>
+    <div class="winner" id="winner">
+        <h1 class="heading" style="font-size: 60px">SCORES</h1>
+        <div class="divide" style="padding: 3% 7% 0% 7%;">
+            <div>
+                <h3 class="heading" style="font-size: 30px;" id="winnernameone"></h3>
+                <h4 class="heading" id="winnerscoreone"></h4>
+            </div>
+            <div>
+                <h3 class="heading" style="font-size: 30px;" id="winnernametwo"></h3>
+                <h4 class="heading" id="winnerscoretwo"></h4>
+            </div>
+        </div>
+        <button class="gotohomebutton" style="margin-top: 100px;" onClick="refresh()">Go to home</button>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/index.js "></script>
+</body>
+</html>
