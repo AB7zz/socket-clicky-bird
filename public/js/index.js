@@ -244,7 +244,7 @@ function reset() {
 
 function refresh(){
     localStorage.removeItem('player-1')
-    localStorage.removeItem('player-1')
+    localStorage.removeItem('player-2')
     localStorage.removeItem('score-1')
     localStorage.removeItem('score-2')
     myScore = 0
