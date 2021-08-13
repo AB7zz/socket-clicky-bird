@@ -31,7 +31,9 @@ const errormessage = document.getElementById('errormessage')
 const birdone = document.getElementById('birdone')
 const birdtwo = document.getElementById('birdtwo')
 const usernameone = document.getElementById('usernameone')
+const usernameoneone = document.getElementById('usernameoneone')
 const usernametwo = document.getElementById('usernametwo')
+const usernametwotwo = document.getElementById('usernametwotwo')
 const waitingmessage = document.getElementById('waitingmessage')
 const heading = document.getElementById('heading')
 const winnernameone = document.getElementById('winnernameone')
@@ -168,9 +170,11 @@ socket.on('player-1-connected', nameId => {
     playerOneConnected = true
     localStorage.setItem('player-1', nameId)
     if(nameId!==''){
-        usernameone.innerText = ' '+ localStorage.getItem('player-1')
+        usernameone.innerText = ' '+ localStorage.getItem('player-1') + '(Player 1)'
+        usernameoneone.innerText = localStorage.getItem('player-1')
     }else{
         usernameone.innerText = ' Player 1'
+        usernameoneone.innerText = 'Player 1'
     }
     waitingmessage.innerText = 'Waiting for another player...'
     playersConnected(1)
@@ -185,15 +189,19 @@ socket.on('player-2-connected', nameId => {
     playerOneConnected = true
     playerTwoConnected = true
     if(localStorage.getItem('player-1')){
-        usernameone.innerText = ' '+ localStorage.getItem('player-1')
+        usernameone.innerText = ' '+ localStorage.getItem('player-1') + '(Player 1)'
+        usernameoneone.innerText = localStorage.getItem('player-1')
     }else{
         usernameone.innerText = ' Player 1'
+        usernameoneone.innerText = 'Player 1'
     }
     if(nameId!=='' || nameId){
-        usernametwo.innerText = nameId
+        usernametwo.innerText = ' ' + nameId + '(Player 2)'
+        usernametwotwo.innerText = nameId
         localStorage.setItem('player-2', nameId)
     }else{
         usernametwo.innerText = " Player 2"
+        usernametwotwo.innerText = "Player 2"
     }
     waitingmessage.innerText = ''
     buttonone.style.display = 'block'
