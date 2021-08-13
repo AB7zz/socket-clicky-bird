@@ -271,14 +271,14 @@ function reset() {
     }else{
         winnerscoretwo.innerText = "0"
     }
-    setInterval(() => {
+    playeroneconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
+    playertwoconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
+    setTimeout(() => {
         localStorage.removeItem('player-1')
         localStorage.removeItem('player-2')
         localStorage.removeItem('score-1')
         localStorage.removeItem('score-2')
     }, 1000)
-    playeroneconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
-    playertwoconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
 }
 
 function refresh(){
