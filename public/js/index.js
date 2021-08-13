@@ -67,18 +67,10 @@ let nameId = ""
 homecreatebutton.addEventListener('click', () => {
     home.style.display = 'none';
     createroom.style.display = 'block';
-    localStorage.removeItem('player-1')
-    localStorage.removeItem('player-2')
-    localStorage.removeItem('score-1')
-    localStorage.removeItem('score-2')
 })
 homejoinbutton.addEventListener('click', () => {
     home.style.display = 'none';
     joinroom.style.display = 'block';
-    localStorage.removeItem('player-1')
-    localStorage.removeItem('player-2')
-    localStorage.removeItem('score-1')
-    localStorage.removeItem('score-2')
 })
 
 createroombutton.addEventListener('click', () => {
@@ -279,10 +271,12 @@ function reset() {
     }else{
         winnerscoretwo.innerText = "0"
     }
-    // localStorage.removeItem('player-1')
-    // localStorage.removeItem('player-2')
-    // localStorage.removeItem('score-1')
-    // localStorage.removeItem('score-2')
+    setInterval(() => {
+        localStorage.removeItem('player-1')
+        localStorage.removeItem('player-2')
+        localStorage.removeItem('score-1')
+        localStorage.removeItem('score-2')
+    }, 1000)
     playeroneconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
     playertwoconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
 }
