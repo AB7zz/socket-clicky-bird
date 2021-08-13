@@ -292,7 +292,7 @@ function refresh(){
 }
 function setTheDamnTimer(){
     let i = 59
-    let f = 5
+    let f = 4
     countdown.style.display = 'block'
     setInterval(() => {
         if(f==0){
