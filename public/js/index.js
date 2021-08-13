@@ -204,8 +204,6 @@ socket.on('player-2-connected', nameId => {
         usernametwotwo.innerText = "Player 2"
     }
     waitingmessage.innerText = ''
-    buttonone.style.display = 'block'
-    buttontwo.style.display = 'block'
     setTheDamnTimer()
     playersConnected(2)
 })
@@ -293,12 +291,14 @@ function refresh(){
     window.location.reload()
 }
 function setTheDamnTimer(){
-    let i = 60
+    let i = 59
     let f = 5
     countdown.style.display = 'block'
     setInterval(() => {
         if(f==0){
             timer.style.display = 'block'
+            buttonone.style.display = 'block'
+            buttontwo.style.display = 'block'
             countdown.style.display = 'none'
             setTimeout(() => {
                 setInterval(function() {
