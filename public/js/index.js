@@ -213,7 +213,6 @@ socket.on('player-1-disconnected', () => {
     reset() 
 })
 socket.on('player-2-disconnected', () => {
-    // playerTwoLeftTheGame()
     reset()
 })
 socket.on('clickDisplay', ({clickone, clicktwo}) => {

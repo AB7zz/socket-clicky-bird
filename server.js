@@ -42,7 +42,7 @@ io.on('connection', socket => {
     socket.on('join-random', nameId => {
         let roomId
         for(let id in rooms){
-            if(rooms[id][1] === "" && room[id][0]){
+            if(rooms[id][1] === "" && rooms[id][0]){
                 roomId = id
                 break
             }

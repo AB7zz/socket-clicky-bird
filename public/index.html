@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Clicky Bird</title>
 </head>
@@ -26,7 +29,7 @@
         <input type="text" class="roomid" id="roomid" placeholder="Enter Room Id..." />
         <button class="createbutton" id="createroombutton">Create</button>
         <button class="cancelbutton" id="cancelcreateroombutton">Cancel</button>
-        <p style="text-align: center; color: red; font-size: 20px;" id="errormessage"></p>
+        
     </div>
     <div class="joinroom" id="joinroom"> 
         <input type="text" class="roomid" id="nameidtwo" placeholder="Enter your name..." />
@@ -35,7 +38,7 @@
         <p style="text-align: center; font-size: 16px;">OR</p>
         <button class="joinbutton" id="joinrandomroombutton">Join Random</button>
         <button class="cancelbutton" id="canceljoinroombutton">Cancel</button>
-        <p style="text-align: center; color: red; font-size: 20px;" id="errormessage"></p>
+        
     </div>
     <div id="game" class="game">
         <div class="divide">
@@ -78,6 +81,7 @@
         </div>
         <button class="gotohomebutton" style="margin-top: 100px;" onClick="refresh()">Go to home</button>
     </div>
+    <p style="text-align: center;font-size: 8px; font-family: 'Press Start 2P', cursive; color: red; font-size: 10px;" id="errormessage"></p>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/index.js "></script>
 </body>
