@@ -21,8 +21,8 @@ io.on('connection', socket => {
             socket.emit('player-1-connected', nameId)
             socket.emit('room-created', roomId)
             console.log('Player 1 Connected')
-        }
-    })
+        } 
+    })  
 
     socket.on('join-room', ({roomId, nameId}) => {
         if(!rooms[roomId]){
@@ -42,16 +42,17 @@ io.on('connection', socket => {
     socket.on('join-random', nameId => {
         let roomId
         for(let id in rooms){
-            if(rooms[id][1] === ""){
+            if(rooms[id][1] === "" && room[id][0]){
                 roomId = id
                 break
             }
         }
 
-        if(roomId === ""){
+        if(roomId === "" || !roomId){
             const message = "All rooms are full or no room exists right now."
             socket.emit('display-error', message)
         }else{
+            console.log(roomId)
             socket.join(roomId)
             userConnected(socket.client.id)
             initializeClick(roomId)

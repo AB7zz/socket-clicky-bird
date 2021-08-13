@@ -76,31 +76,31 @@ homejoinbutton.addEventListener('click', () => {
 createroombutton.addEventListener('click', () => {
     roomId = roomIdInput.value
     nameId = nameIdOneInput.value
-    errormessage.innerText = ''
+    // errormessage.innerText = ''
     errormessage.style.display = 'none'
     socket.emit('create-room', {roomId, nameId})
 })
 cancelcreateroombutton.addEventListener('click', () => {
     home.style.display = 'block';
-    errormessage.innerText = ''
+    // errormessage.innerText = ''
     errormessage.style.display = 'none'
     createroom.style.display = 'none';
 })
 joinroombutton.addEventListener('click', () => {
     roomId = joinRoomIdInput.value
     nameId = nameIdTwoInput.value
-    errormessage.innerText = ''
+    // errormessage.innerText = ''
     errormessage.style.display = 'none'
     socket.emit('join-room', {roomId, nameId})
 })
 canceljoinroombutton.addEventListener('click', () => {
     home.style.display = 'block';
-    errormessage.innerText = ''
+    // errormessage.innerText = ''
     errormessage.style.display = 'none'
     joinroom.style.display = 'none';
 })
 joinrandomroombutton.addEventListener('click', () => {
-    errormessage.innerText = ''
+    // errormessage.innerText = ''
     errormessage.style.display = 'none'
     nameId = nameIdTwoInput.value
     socket.emit('join-random', nameId)
@@ -158,6 +158,8 @@ buttontwo.addEventListener('click', () => {
 })
 
 socket.on('display-error', message => {
+    console.log(message)
+    errormessage.style.display = 'block'
     errormessage.innerText = message
 })
 socket.on('room-created', id => {
