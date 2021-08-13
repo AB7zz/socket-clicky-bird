@@ -158,7 +158,6 @@ buttontwo.addEventListener('click', () => {
 })
 
 socket.on('display-error', message => {
-    console.log(message)
     errormessage.style.display = 'block'
     errormessage.innerText = message
 })

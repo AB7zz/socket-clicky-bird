@@ -52,7 +52,6 @@ io.on('connection', socket => {
             const message = "All rooms are full or no room exists right now."
             socket.emit('display-error', message)
         }else{
-            console.log(roomId)
             socket.join(roomId)
             userConnected(socket.client.id)
             initializeClick(roomId)
