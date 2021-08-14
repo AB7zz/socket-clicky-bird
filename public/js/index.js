@@ -238,7 +238,6 @@ function playersConnected(playerId){
         playertwoconnectioncircle.innerHTML = '<img src="images/online.png" style="height: 20px; width: auto;" />'
     }
 }
-
 function reset() {
     myScore = 0
     enemyScore = 0
