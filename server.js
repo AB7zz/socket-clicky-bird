@@ -14,6 +14,9 @@ io.on('connection', socket => {
         if(rooms[roomId]){
             const message = "A room already exists with id "+ roomId
             socket.emit('display-error', message)
+        }else if(roomId=""){
+            const message = "Cannot create a room with a blank id"
+            socket.emit('display-error', message)
         }else{
             socket.join(roomId)
             userConnected(socket.client.id)
