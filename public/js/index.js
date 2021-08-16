@@ -110,6 +110,8 @@ buttonone.addEventListener('click', () => {
         myScore += 1
         const clickNo = myScore
         socket.emit('click', {roomId, playerId, clickNo})
+
+        //jump
         if(imageone.classList.contains('jump')){
             imageone.classList.add('jump1')
             imageone.classList.remove('jump')
@@ -118,6 +120,7 @@ buttonone.addEventListener('click', () => {
             imageone.classList.remove('jump1')
         }
     }else{
+        //shake
         if(birdone.classList.contains('shake')){
             birdone.classList.add('shake1')
             birdone.classList.remove('shake')

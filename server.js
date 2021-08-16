@@ -66,7 +66,7 @@ io.on('connection', socket => {
     }) 
 
     socket.on('click', ({roomId, playerId, clickNo}) => {
-        clickScore(roomId, playerId, clickNo)
+        clickScore(roomId, playerId, clickNo)  
         const clickone = clicks[roomId][0]
         const clicktwo = clicks[roomId][1]
         socket.join(roomId)

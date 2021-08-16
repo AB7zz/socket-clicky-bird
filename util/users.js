@@ -15,4 +15,3 @@ const clickScore = (roomId, playerId, clickNo) => {
 
 module.exports = {connectedUsers, clicks, initializeClick, userConnected, clickScore}
 
-
