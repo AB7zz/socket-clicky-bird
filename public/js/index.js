@@ -292,7 +292,7 @@ function refresh(){
     window.location.reload()
 }
 function setTheDamnTimer(){
-    let i = 59
+    let i = 24
     let f = 4
     countdown.style.display = 'block'
     setInterval(() => {
