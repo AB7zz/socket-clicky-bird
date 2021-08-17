@@ -1,7 +1,7 @@
 const clicks = {}
 const connectedUsers = {}
 const initializeClick = (roomId) => {
-    clicks[roomId] = ["", ""]
+    clicks[roomId] = [0, 0]
 }
 const userConnected = playerSocketId => {
     connectedUsers[playerSocketId] = true

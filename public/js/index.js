@@ -64,6 +64,7 @@ let roomId = ""
 let nameId = ""
 let playeronename = ""
 let playertwoname = ""
+let genPlayerId = 0;
 
 //Main Code
 homecreatebutton.addEventListener('click', () => {
@@ -111,18 +112,13 @@ buttonone.addEventListener('click', () => {
     if(playerId!==2){
         myScore += 1
         const clickNo = myScore
-        socket.emit('click', {roomId, playerId, clickNo})
-
-        //jump
-        if(imageone.classList.contains('jump')){
-            imageone.classList.add('jump1')
-            imageone.classList.remove('jump')
-        }else{
-            imageone.classList.add('jump')
-            imageone.classList.remove('jump1')
-        }
+        genPlayerId = "none"
+        socket.emit('click', {roomId, playerId, genPlayerId, clickNo})
     }else{
-        //shake
+        myScore -= 1
+        const clickNo = myScore
+        genPlayerId = 1
+        socket.emit('click', {roomId, playerId, genPlayerId, clickNo})
         if(birdone.classList.contains('shake')){
             birdone.classList.add('shake1')
             birdone.classList.remove('shake')
@@ -130,9 +126,6 @@ buttonone.addEventListener('click', () => {
             birdone.classList.add('shake')
             birdone.classList.remove('shake1')
         }
-        enemyScore -= 1
-        const clickNo = enemyScore
-        socket.emit('click', {roomId, playerId, clickNo})
     }
 })
 
@@ -140,15 +133,13 @@ buttontwo.addEventListener('click', () => {
     if(playerId!==1){
         enemyScore += 1
         const clickNo = enemyScore
-        socket.emit('click', {roomId, playerId, clickNo})
-        if(imagetwo.classList.contains('jump')){
-            imagetwo.classList.add('jump1')
-            imagetwo.classList.remove('jump')
-        }else{
-            imagetwo.classList.add('jump')
-            imagetwo.classList.remove('jump1')
-        }
+        genPlayerId = "none"
+        socket.emit('click', {roomId, playerId, genPlayerId, clickNo})
     }else{
+        enemyScore -= 1
+        const clickNo = enemyScore
+        genPlayerId = 2
+        socket.emit('click', {roomId, playerId, genPlayerId, clickNo})
         if(birdtwo.classList.contains('shake')){
             birdtwo.classList.add('shake1')
             birdtwo.classList.remove('shake')
@@ -156,9 +147,6 @@ buttontwo.addEventListener('click', () => {
             birdtwo.classList.add('shake')
             birdtwo.classList.remove('shake1')
         }
-        myScore -= 1
-        const clickNo = myScore
-        socket.emit('click', {roomId, playerId, clickNo})
     }
 })
 
@@ -220,16 +208,34 @@ socket.on('player-1-disconnected', () => {
 socket.on('player-2-disconnected', () => {
     reset()
 })
-socket.on('clickDisplay', ({clickone, clicktwo}) => {
+socket.on('clickDisplay', ({clickone, clicktwo, playerId}) => {
     if(clickone!==""){
         scoreone.innerText = clickone
         myScore = clickone
+        if(playerId==1){
+            if(imageone.classList.contains('jump')){
+                imageone.classList.add('jump1')
+                imageone.classList.remove('jump')
+            }else{
+                imageone.classList.add('jump')
+                imageone.classList.remove('jump1')
+            }
+        }
     }else{
         scoreone.innerText = "0"
     }
     if(clicktwo!==""){
         scoretwo.innerText = clicktwo
         enemyScore = clicktwo
+        if(playerId==2){
+            if(imagetwo.classList.contains('jump')){
+                imagetwo.classList.add('jump1')
+                imagetwo.classList.remove('jump')
+            }else{
+                imagetwo.classList.add('jump')
+                imagetwo.classList.remove('jump1')
+            }
+        }
     }else{
         scoretwo.innerText = "0"
     }

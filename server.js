@@ -72,12 +72,20 @@ io.on('connection', socket => {
         }
     }) 
 
-    socket.on('click', ({roomId, playerId, clickNo}) => {
-        clickScore(roomId, playerId, clickNo)  
+    socket.on('click', ({roomId, playerId, genPlayerId, clickNo}) => {
+        if(genPlayerId==="none"){
+            clickScore(roomId, playerId, clickNo)
+        }else if(genPlayerId===1){
+            playerId="none"
+            clickScore(roomId, genPlayerId, --clicks[roomId][0]) 
+        }else{
+            playerId="none"
+            clickScore(roomId, genPlayerId, --clicks[roomId][1])
+        }
         const clickone = clicks[roomId][0]
         const clicktwo = clicks[roomId][1]
         socket.join(roomId)
-        io.to(roomId).emit('clickDisplay', {clickone, clicktwo})
+        io.to(roomId).emit('clickDisplay', {clickone, clicktwo, playerId})
     })
 
     socket.on('disconnect', () => {
