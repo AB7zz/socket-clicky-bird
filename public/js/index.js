@@ -62,6 +62,8 @@ let myScore = 0;
 let enemyScore = 0;
 let roomId = ""
 let nameId = ""
+let playeronename = ""
+let playertwoname = ""
 
 //Main Code
 homecreatebutton.addEventListener('click', () => {
@@ -170,12 +172,12 @@ socket.on('room-created', id => {
     createroom.style.display = 'none'
     game.style.display = 'block'
 })
-socket.on('player-1-connected', nameId => {
+socket.on('player-1-connected', username1 => {
     playerOneConnected = true
-    localStorage.setItem('player-1', nameId)
-    if(nameId!==''){
-        usernameone.innerText = ' '+ localStorage.getItem('player-1') + '(Player 1)'
-        usernameoneone.innerText = localStorage.getItem('player-1')
+    playeronename = username1
+    if(username1!==''){
+        usernameone.innerText = ' '+ username1 + '(Player 1)'
+        usernameoneone.innerText = username1
     }else{
         usernameone.innerText = ' Player 1'
         usernameoneone.innerText = 'Player 1'
@@ -189,20 +191,21 @@ socket.on('room-joined', id => {
     joinroom.style.display = 'none'
     game.style.display = 'block'
 })
-socket.on('player-2-connected', nameId => {
+socket.on('player-2-connected', (username1, username2) => {
     playerOneConnected = true
     playerTwoConnected = true
-    if(localStorage.getItem('player-1')){
-        usernameone.innerText = ' '+ localStorage.getItem('player-1') + '(Player 1)'
-        usernameoneone.innerText = localStorage.getItem('player-1')
+    playeronename = username1
+    playertwoname = username2
+    if(username1){
+        usernameone.innerText = ' '+ username1 + '(Player 1)'
+        usernameoneone.innerText = username1
     }else{
         usernameone.innerText = ' Player 1'
         usernameoneone.innerText = 'Player 1'
     }
-    if(nameId!=='' || nameId){
-        usernametwo.innerText = ' ' + nameId + '(Player 2)'
-        usernametwotwo.innerText = nameId
-        localStorage.setItem('player-2', nameId)
+    if(username2!=='' || username2){
+        usernametwo.innerText = ' ' + username2 + '(Player 2)'
+        usernametwotwo.innerText = username2
     }else{
         usernametwo.innerText = " Player 2"
         usernametwotwo.innerText = "Player 2"
@@ -220,13 +223,13 @@ socket.on('player-2-disconnected', () => {
 socket.on('clickDisplay', ({clickone, clicktwo}) => {
     if(clickone!==""){
         scoreone.innerText = clickone
-        localStorage.setItem('score-1', clickone)
+        myScore = clickone
     }else{
         scoreone.innerText = "0"
     }
     if(clicktwo!==""){
         scoretwo.innerText = clicktwo
-        localStorage.setItem('score-2', clicktwo)
+        enemyScore = clicktwo
     }else{
         scoretwo.innerText = "0"
     }
@@ -242,9 +245,6 @@ function playersConnected(playerId){
     }
 }
 function reset() {
-    myScore = 0
-    enemyScore = 0
-    playerId = 0
     playerOneConnected = false
     playerTwoConnected = false
     game.style.display = 'none'
@@ -253,43 +253,31 @@ function reset() {
     home.style.display = 'none'
     heading.style.display = 'none'
     winner.style.display = 'block'
-    if(localStorage.getItem('player-1')){
-        winnernameone.innerText = localStorage.getItem('player-1')
+    if(playeronename){
+        winnernameone.innerText = playeronename
     }else{
         winnernameone.innerText = "Player 1"
     }
-    if(localStorage.getItem('player-2')){
-        winnernametwo.innerText = localStorage.getItem('player-2')
+    if(playertwoname){
+        winnernametwo.innerText = playertwoname
     }else{
         winnernametwo.innerText = "Player 2"
     }
-    if(localStorage.getItem('score-1')){
-        winnerscoreone.innerText = localStorage.getItem('score-1')
+    if(myScore){
+        winnerscoreone.innerText = myScore
     }else{
         winnerscoreone.innerText = "0"
     }
-    if(localStorage.getItem('score-2')){
-        winnerscoretwo.innerText = localStorage.getItem('score-2')
+    if(enemyScore){
+        winnerscoretwo.innerText = enemyScore
     }else{
         winnerscoretwo.innerText = "0"
     }
     playeroneconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
     playertwoconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
-    setTimeout(() => {
-        localStorage.removeItem('player-1')
-        localStorage.removeItem('player-2')
-        localStorage.removeItem('score-1')
-        localStorage.removeItem('score-2')
-    }, 1000)
 }
 
 function refresh(){
-    localStorage.removeItem('player-1')
-    localStorage.removeItem('player-2')
-    localStorage.removeItem('score-1')
-    localStorage.removeItem('score-2')
-    myScore = 0
-    enemyScore = 0
     playeroneconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
     playertwoconnectioncircle.innerHTML = '<img src="images/offline.png" style="height: 21px; width: auto;" />'
     window.location.reload()

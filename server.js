@@ -5,11 +5,13 @@ const path = require('path')
 const { emit } = require('process')
 const server = http.createServer(app)
 const socketio = require('socket.io')
-const {rooms, createRoom, joinRoom, leaveRoom} = require('./util/rooms.js')
+const {rooms, createRoom, joinRoom, leaveRoom, username} = require('./util/rooms.js')
 const {clicks, initializeClick, userConnected, connectedUsers, clickScore} = require('./util/users.js')
 app.use(express.static(path.join(__dirname, 'public')))
 const io = socketio(server)
 io.on('connection', socket => {
+    let username1;
+    let username2;
     socket.on('create-room', ({roomId, nameId}) => {
         if(rooms[roomId]){
             const message = "A room already exists with id "+ roomId
@@ -20,8 +22,9 @@ io.on('connection', socket => {
         }else{
             socket.join(roomId)
             userConnected(socket.client.id)
-            createRoom(roomId, socket.client.id)
-            socket.emit('player-1-connected', nameId)
+            createRoom(roomId, socket.client.id, nameId)
+            username1 = username[roomId][0]
+            socket.emit('player-1-connected', username1)
             socket.emit('room-created', roomId)
             console.log('Player 1 Connected')
         } 
@@ -35,8 +38,10 @@ io.on('connection', socket => {
             socket.join(roomId)
             userConnected(socket.client.id)
             initializeClick(roomId)
-            joinRoom(roomId, socket.client.id)
-            io.to(roomId).emit('player-2-connected', nameId)
+            joinRoom(roomId, socket.client.id, nameId)
+            username1 = username[roomId][0]
+            username2 = username[roomId][1]
+            io.to(roomId).emit('player-2-connected', username1, username2)
             socket.emit('room-joined', roomId)
             console.log('Player 2 Connected')
         }
@@ -58,8 +63,10 @@ io.on('connection', socket => {
             socket.join(roomId)
             userConnected(socket.client.id)
             initializeClick(roomId)
-            joinRoom(roomId, socket.client.id)
-            io.to(roomId).emit('player-2-connected', nameId)
+            joinRoom(roomId, socket.client.id, nameId)
+            username1 = username[roomId][0]
+            username2 = username[roomId][1]
+            io.to(roomId).emit('player-2-connected', username1, username2)
             socket.emit('room-joined', roomId)
             console.log('Player 2 Connected')
         }
