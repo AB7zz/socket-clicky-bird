@@ -290,7 +290,7 @@ function refresh(){
 }
 function setTheDamnTimer(){
     let i = 24
-    let f = 4
+    let f = 9
     countdown.style.display = 'block'
     setInterval(() => {
         if(f==0){
