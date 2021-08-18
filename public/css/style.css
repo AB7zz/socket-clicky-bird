@@ -128,8 +128,8 @@ body{
     /* display: block; */
 }
 .game{
-    /* display: none; */
-    display: block;
+    display: none;
+    /* display: block; */
 }
 .winner {
     display: none;
@@ -137,14 +137,14 @@ body{
 }
 .home{
     margin-top: 50px;
-    /* display: block; */
-    display: none;
+    display: block;
+    /* display: none; */
 }
 .button{
     height: 150px;
     width: auto;
     cursor: pointer;
-    /* display: none; */
+    display: none;
 }
 .score{
     font-family: 'Erica One', cursive;
