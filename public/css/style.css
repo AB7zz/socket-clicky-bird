@@ -53,6 +53,10 @@ body{
     margin-top: 100px;
     width: auto;
 }
+.bulbimage{
+    height: 50px;
+    width: auto;
+}
 .jump {
     animation-name: jump;
     animation-duration: 0.1s;

@@ -42,6 +42,7 @@ const winnerscoreone = document.getElementById('winnerscoreone')
 const winnerscoretwo = document.getElementById('winnerscoretwo')
 const timer = document.getElementById('timer')
 const countdown = document.getElementById('countdown')
+const tip = document.getElementById('tip')
 
 //User 1
 const scoreone = document.getElementById('score1')
@@ -199,6 +200,7 @@ socket.on('player-2-connected', (username1, username2) => {
         usernametwotwo.innerText = "Player 2"
     }
     waitingmessage.innerText = ''
+    tip.innerHTML = '<img class="bulbimage" src="images/bulb.png" /> <p style="margin-top: 22px !important;" class="usernamedown">Click on your enemys button to reduce his/her score by 1 point!</p>'
     setTheDamnTimer()
     playersConnected(2)
 })
@@ -259,6 +261,7 @@ function reset() {
     home.style.display = 'none'
     heading.style.display = 'none'
     winner.style.display = 'block'
+    tip.innerHTML = ''
     if(playeronename){
         winnernameone.innerText = playeronename
     }else{
@@ -294,6 +297,7 @@ function setTheDamnTimer(){
     countdown.style.display = 'block'
     setInterval(() => {
         if(f==0){
+            tip.innerHTML = ''
             timer.style.display = 'block'
             buttonone.style.display = 'block'
             buttontwo.style.display = 'block'
