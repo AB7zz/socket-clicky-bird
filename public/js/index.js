@@ -43,6 +43,7 @@ const winnerscoretwo = document.getElementById('winnerscoretwo')
 const timer = document.getElementById('timer')
 const countdown = document.getElementById('countdown')
 const tip = document.getElementById('tip')
+const displayroom = document.getElementById('displayroom')
 
 //User 1
 const scoreone = document.getElementById('score1')
@@ -161,9 +162,10 @@ socket.on('room-created', id => {
     createroom.style.display = 'none'
     game.style.display = 'block'
 })
-socket.on('player-1-connected', username1 => {
+socket.on('player-1-connected', (username1, roomId) => {
     playerOneConnected = true
     playeronename = username1
+    displayroom.innerHTML = `<span class="usernamedown">Room Id</span><input style="margin-right: 7px;" type="text" value=${roomId} class="displayroomid" />`
     if(username1!==''){
         usernameone.innerText = ' '+ username1 + '(Player 1)'
         usernameoneone.innerText = username1
@@ -178,9 +180,10 @@ socket.on('room-joined', id => {
     playerId = 2
     roomId = id
     joinroom.style.display = 'none'
+    displayroom.innerHTML = `<span class="usernamedown">Room Id</span><input style="margin-right: 7px;" type="text" value=${id} class="displayroomid" />`
     game.style.display = 'block'
 })
-socket.on('player-2-connected', (username1, username2) => {
+socket.on('player-2-connected', (username1, username2, roomId) => {
     playerOneConnected = true
     playerTwoConnected = true
     playeronename = username1

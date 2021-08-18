@@ -24,7 +24,7 @@ io.on('connection', socket => {
             userConnected(socket.client.id)
             createRoom(roomId, socket.client.id, nameId)
             username1 = username[roomId][0]
-            socket.emit('player-1-connected', username1)
+            socket.emit('player-1-connected', username1, roomId)
             socket.emit('room-created', roomId)
             console.log('Player 1 Connected')
         } 
@@ -41,7 +41,7 @@ io.on('connection', socket => {
             joinRoom(roomId, socket.client.id, nameId)
             username1 = username[roomId][0]
             username2 = username[roomId][1]
-            io.to(roomId).emit('player-2-connected', username1, username2)
+            io.to(roomId).emit('player-2-connected', username1, username2, roomId)
             socket.emit('room-joined', roomId)
             console.log('Player 2 Connected')
         }

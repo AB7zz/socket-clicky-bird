@@ -171,6 +171,14 @@ body{
     transform: scale(1.03);
     transition: 0.15s;
 }
+.displayroomid {
+    padding: 14px 14px;
+    width: 20%;
+    margin-bottom: 15px;
+    transition: 0.15s;
+    font-size: 8px;
+    font-family: 'Press Start 2P', cursive;
+}
 .createbutton{
     padding: 15px 100px;
     background: rgb(0, 160, 0);
