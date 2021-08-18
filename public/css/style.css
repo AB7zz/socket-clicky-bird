@@ -244,7 +244,10 @@ body{
     font-family: 'Press Start 2P', cursive; 
     font-size: 17px !important;
 }
-
+.usernamedown{
+    font-family: 'Press Start 2P', cursive; 
+    font-size: 9px;
+}
 @media screen and (max-width: 768px){
     .image{
         height: 100px;
