@@ -243,6 +243,7 @@ body{
 .username{
     font-family: 'Press Start 2P', cursive; 
     font-size: 17px !important;
+    color: green;
 }
 .usernamedown{
     font-family: 'Press Start 2P', cursive; 
