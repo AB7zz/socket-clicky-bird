@@ -1,4 +1,4 @@
-Here's the app! https://rocky-coast-54457.herokuapp.com/
+Here's the app! https://clicky-bird.herokuapp.com/
 # How to start this app
 
 1. Open your terminal
